@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Reviewer</title>
+    <style>
+        *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #03001C;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background-color: #301E67;
+    height: 90vh;
+    min-width: 300px;
+    width: 40vw;
+    border-radius: 30px;
+    border: 5px solid #5B8FB9;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+    color: #c8e3f9;
+}
+
+.question {
+    font-size: 2rem;
+}
+
+.answer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ans, .btn {
+    height: 2.5rem;
+    border-radius: 8px;
+}
+
+.ans {
+    background-color: #2b1f4f;
+    border: none;
+    text-align: center;
+    color: #c8e3f9;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+.btn {
+    background-color: #5B8FB9;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #70addf;
+}
+    </style>
+    <script type="module">
+        const data = [
+    {
+        question : "the first popular graphical browser application",
+        answer : "mosaic"
+    },{
+        question : "is the term popular in the 1990s for the person who was responsible for creating and supporting a website",
+        answer : "webmaster"
+    },{
+        question : "The _______ website consists only of HTML pages that look identical for all users at all times.",
+        answer : "static"
+    },{
+        question : "_________ website is created at run time by a program created by a programmer; this page content can vary from user to user.",
+        answer : "dynamic"
+    },{
+        question : "A _________ is a set of rules that partners in communication use when they communicate.",
+        answer : "protocol"
+    },{
+        question : "The _____ layer is the lowest layer, responsible for both the physical transmission across media (wires, wireless) and establishing logical links.",
+        answer : "link"
+    },{
+        question : "The ________ layer (sometimes also called the IP Layer) routes packets between communication partnersvacross networks.",
+        answer : "internet"
+    },{
+        question : "The Internet uses _________ addresses to identify destinations on the Internet",
+        answer : "internet protocol"
+    },{
+        question : "The ________ layer ensures transmissions arrive in order and without error. This is accomplished through a few mechanisms.",
+        answer : "transport"
+    },{
+        question : "_________ layer protocols implement process-to-process communication and are at a higher level of abstraction in comparison to the low-level packet and IP address protocols in the layers below it.",
+        answer : "application"
+    },{
+        question : "The ______ is a computer agent that is normally active 24 hours a day, 7 days a week, listening for queriesvfrom any client who make a request.",
+        answer : "server"
+    },{
+        question : "A ______ is a computer agent who makes requests and receives responses from the server, in response codes, images, client text files, and other data.",
+        answer : "client"
+    },{
+        question : "An ________ server is a computer that hosts and executes web applications, which may be created in PHP, ASP.NET, Ruby on Rails, or some other web development technology.",
+        answer : "application"
+    },{
+        question : "A _________ server is a computer that is devoted to running a Database Management System (DBMS), such as MySQL, Oracle, or SQL Server, that is being used by web applications.",
+        answer : "database"
+    },{
+        question : "A _____ server is a computer creating and satisfying mail requests, typically using the Simple Mail Transfer Protocol (SMTP).",
+        answer : "mail"
+    },{
+        question : "A ______ server (also called a streaming server) is a special type of server dedicated to servicing requests for images and videos.",
+        answer : "media"
+    },{
+        question : "An __________ server handles the most common security needs of web applications.",
+        answer : "authentication"
+    },{
+        question : "its goal is to distribute incoming requests between clusters of machines so that any given web or data server is not excessively overloaded.",
+        answer : "server farm"
+    },{
+        question : "Special devices called ________ are used to distribute incoming requests to available machines.",
+        answer : "load balancers"
+    },{
+        question : "The ________ (also called a cable modem or DSL modem) is a bridge between the network hardware outside the house (typically controlled by a phone or cable company) and the network hardware inside the house.",
+        answer : "broadband modem"
+    },{
+        question : "A _______ is a hardware device that forwards data packets from one network to another network",
+        answer : "router"
+    },{
+        question : "_______ is a glass-based wire that transmits light and has significantly greater bandwidth and speed in comparison to metal wires.",
+        answer : "fiber optic cable"
+    },{
+        question : "______ are integer values returned by the server as part of the response header",
+        answer : "response codes"
+    },{
+        question : "__________ have information about the server answering the request and the data being sent.",
+        answer : "response headers"
+    },{
+        question : "The ________ header was introduced in HTTP 1.1, and it allows multiple websites to be hosted off the same IP address.",
+        answer : "host"
+    },{
+        question : "The ________ is the most referenced header in modern web development.",
+        answer : "user-agent string"
+    },{
+        question : "The _______ header tells the server what kind of media types the client can receive in the response.",
+        answer : "accept"
+    },{
+        question : "The _______ headers specify what types of modifications can be done to the data before transmission.",
+        answer : "accept-encoding"
+    },{
+        question : "The ______ header allows the client to control caching mechanisms.",
+        answer : "cache"
+    },{
+        question : "________ header contains information about when the requested resource last changed.",
+        answer : "last-modified"
+    },{
+        question : "_________ header specifies how large the response body (message) will be.",
+        answer : "content-length"
+    },{
+        question : "The response header __________ tells the browser what type of data is attached in the body of the message.",
+        answer : "content-type"
+    },{
+        question : "A _____ server is nothing more than a computer that responds to HTTP requests.",
+        answer : "web"
+    },{
+        question : "refers to an Internet network that is local to an organization or business. Intranet resources are often private, meaning that only employees (or authorized external parties such as customers or suppliers) have access to those resources.",
+        answer : "intranet"
+    },{
+        question : "Server farms are typically housed in special facilities called __________",
+        answer : "data centers"
+    }
+]
+
+const questionContainter = document.getElementById("question");
+const userInput = document.getElementById("ans");
+const submitBtn = document.getElementById("btn");
+
+const generateQuestion = () => {
+    const num = Math.floor(Math.random() * data.length);
+    const dataQuestion = data[num].question;
+    const question = dataQuestion.charAt(0).toUpperCase() + dataQuestion.slice(1);
+    
+    questionContainter.innerText = question;
+
+    submitBtn.onclick = () => {
+        const userAnswer = userInput.value;
+    
+    if(userAnswer.toLowerCase() == data[num].answer) {
+        console.log("correct!");
+        userInput.value = "";
+        generateQuestion();
+    } else {
+        console.log("wrong");
+        alert("wrong");
+    }
+    };
+}
+
+generateQuestion()
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="questions">
+            <h3 class="question" id="question"></h3>
+        </div>
+        <div class="answer">
+            <input type="text" placeholder="Answer" class="ans" id="ans">
+            <input type="submit" value="Confirm" class="btn" id="btn">
+        </div>
+    </div>
+</body>
+</html>
